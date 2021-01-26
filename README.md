@@ -58,9 +58,12 @@ Once the sketch is loaded on the Every, connect it to the Pi with a micro-USB ca
 
 To start Chromium fullscreen with the Pip-boy UI page:
 - Edit `/etc/xdg/lxsession/LXDE-pi/autostart`, and add the following line:
-`@chromium-browser --kiosk --start-fullscreen /home/pi/Desktop/pip-boy-2000-mk-I/html/index.html`
+`@chromium-browser --kiosk --start-fullscreen --noerrdialogs --disable-session-crashed-bubble --disable-infobars --check-for-update-interval=604800 --disable-pinch /home/pi/Desktop/pip-boy-2000-mk-I/html/index.html`
 
-### Python
+To hide the mouse cursor:
+`sudo apt-get install unclutter`
+
+### Python on the Pi
 
 - `cd python`
 - `sudo pip3 install keyboard`
@@ -68,10 +71,11 @@ To start Chromium fullscreen with the Pip-boy UI page:
 
 After that, you can try to run the script with `python pip-boy.py`. Any communication to the serial port should be shown in the terminal.
 
-To make the script run when the Pi is started:
+To make the script run when the Pi is started, add the following line to `/home/pi/.profile`:
+`sudo python3 /home/pi/Desktop/pip-boy-2000-mk-I/python/pip-boy.py &`
 
-- `sudo cp pip-boy.service /etc/systemd/system/`
-- `sudo systemctl enable pip-boy.service`
+Once you've done all the config on the Pi, including the Python config, reboot:
+`sudo reboot now`
 
 ## Power
 
