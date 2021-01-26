@@ -18,8 +18,11 @@ while True:
     else:
       print('Unknown rot command "' + data  + '"');
   elif command[0] == 'pot':
-    print('POT');
-    keyboard.write(command[1] + command[2] + ' ')
+    # This should be filtered on the Arduino, but I can't be bothered opening the Pip-boy just now.
+    if abs(pot[command[1]] - command[2]):
+      print(data);
+      keyboard.write(command[1] + command[2] + ' ')
+      pot[command[1]] = command[2]
   elif command[0][:1] == 'B':
     if command[0][1:] == '11':
       print('STATUS')
