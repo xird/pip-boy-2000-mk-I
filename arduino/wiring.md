@@ -37,6 +37,12 @@ Arduino Nano Every +5V should be connected to:
 - Pull-down resistors between each Nano push button pin(4, 5, 8, 11, 12) and ground. 5kohm works well.
 - Potentiometer values don't matter. Go with 10kohm, for example.
 
+## Capacitors
+
+These are optional, but they can help smooth out jittery values read from the potentiometers.
+
+- 1uF capacitor between each pot's middle(wiper) and left(ground).
+
 ## Hints:
 
 - Assemble the connections one component at a time, and confirm that they work correctly before moving on to the next one.

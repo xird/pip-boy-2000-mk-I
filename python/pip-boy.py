@@ -4,16 +4,8 @@ import time
 
 ser = serial.Serial('/dev/ttyACM0')
 
-#recorded = keyboard.record(until='esc')
-#print(recorded)
-
-
 while True:
-  #time.sleep(1)
-  #keyboard.press_and_release("up")
-
-  
-  data = ser.readline().strip()
+  data = ser.readline().strip().decode()
   print(data)
   command = data.split(' ')
   
@@ -28,7 +20,7 @@ while True:
       print('Unknown rot command "' + data  + '"');
   elif command[0] == 'pot':
     print('POT');
-    # TODO figure out how to send pot values as kb input
+    keyboard.write(command[1] + command[2] + ' ')
   elif command[0][:1] == 'B':
     if command[0][1:] == '11':
       print('STATUS')
@@ -47,19 +39,3 @@ while True:
       print('ENTER')
   else:
     print('Unknown command "' + data + '"');
-  
-
-
-'''
-B8
-
-B8
-
-B11
-
-B12
-
-B4
-
-B5
-'''

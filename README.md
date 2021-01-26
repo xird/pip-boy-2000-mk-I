@@ -61,15 +61,15 @@ Once the sketch is loaded on the Every, connect it to the Pi with a micro-USB ca
 ### Python
 
 - `cd python`
-- `pip install keyboard`
-- `pip install serial`
+- `sudo pip3 install keyboard`
+- `sudo pip3 install pyserial`
 
 After that, you can try to run the script with `python pip-boy.py`. Any communication to the serial port should be shown in the terminal.
 
 To make the script run when the Pi is started:
 
 - `sudo cp pip-boy.service /etc/systemd/system/`
-- `sudo systemctl enable myscript.service`
+- `sudo systemctl enable pip-boy.service`
 
 ## Power
 

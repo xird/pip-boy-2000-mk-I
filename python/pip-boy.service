@@ -3,8 +3,8 @@ Description=Pip-boy serial to keypress service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 -u main.py
-WorkingDirectory=/home/pi/Desktop/pip-boy-2000-mk-I/python/pip-boy.py
+ExecStart=/usr/bin/python3 -u pip-boy.py
+WorkingDirectory=/home/pi/Desktop/pip-boy-2000-mk-I/python
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
