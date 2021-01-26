@@ -6,9 +6,8 @@ ser = serial.Serial('/dev/ttyACM0')
 
 while True:
   data = ser.readline().strip().decode()
-  print(data)
   command = data.split(' ')
-  
+
   if command[0] == 'rot':
     if command[1] == '1':
       print('UP')
