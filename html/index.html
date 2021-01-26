@@ -1,0 +1,168 @@
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+
+  <link rel="stylesheet" href="pip-boy.css" />
+
+  <script src="screens/main.js"></script>
+
+  <script src="screens/automaps.js"></script>
+  <script src="screens/automaps-klamath-downtown.js"></script>
+  <script src="screens/automaps-klamath-mall.js"></script>
+  <script src="screens/automaps-klamath-rat-caves-1.js"></script>
+  <script src="screens/automaps-klamath-rat-caves-2.js"></script>
+  <script src="screens/automaps-klamath-grazing-area.js"></script>
+  <script src="screens/automaps-klamath-canyon.js"></script>
+  <script src="screens/automaps-arroyo-temple.js"></script>
+  <script src="screens/automaps-arroyo-village.js"></script>
+  <script src="screens/automaps-arroyo-bridge.js"></script>
+  <script src="screens/automaps-arroyo-wilderness.js"></script>
+  <script src="screens/automaps-arroyo-temple-entrance.js"></script>
+  <script src="screens/automaps-den-businesses-1.js"></script>
+  <script src="screens/automaps-den-businesses-2.js"></script>
+  <script src="screens/automaps-gecko-settlement.js"></script>
+  <script src="screens/automaps-gecko-power-plant.js"></script>
+  <script src="screens/archives.js"></script>
+  <script src="screens/archives-elder.js"></script>
+  <script src="screens/archives-suit.js"></script>
+  <script src="screens/archives-dream-1.js"></script>
+  <script src="screens/archives-dream-2.js"></script>
+  <script src="screens/splash.js"></script>
+  <script src="screens/status.js"></script>
+  <script src="screens/status-arroyo.js"></script>
+  <script src="screens/status-den.js"></script>
+  <script src="screens/status-gecko.js"></script>
+  <script src="screens/status-klamath.js"></script>
+
+  <script>
+  const keyHandler = (e) => {
+    console.log(e.key);
+
+    switch (e.key) {
+      case 'c':
+        // Close
+        el.innerHTML = screens.splash;
+        break;
+
+      case 's':
+        // Status
+        scroll = false;
+        el.innerHTML = screens.status;
+        break;
+
+      case 'm':
+        // autoMaps
+        scroll = false;
+        el.innerHTML = screens.automaps;
+        break;
+
+      case 'r':
+        // aRchives
+        scroll = false;
+        el.innerHTML = screens.archives;
+        break;
+
+      case 'ArrowUp':
+        // Rotary encoder up
+        if (scroll === false) {
+          scroll = itemsLength - 1;
+        } else {
+          scroll--;
+          if (scroll < 0) {
+            scroll = itemsLength - 1;
+          }
+        }
+
+        highlight();
+        break;
+
+      case 'ArrowDown':
+        // Rotary encoder down
+        if (scroll === false) {
+          scroll = 0;
+        } else {
+          scroll++;
+          if (scroll >= itemsLength) {
+            scroll = 0;
+          }
+        }
+
+        highlight();
+        break;
+
+      case 'Enter':
+        // Rotary encoder button clicked; select highlighted item
+        const current = document.getElementsByClassName("highlight")[0];
+        current.click();
+        break
+    }
+  };
+
+  let el;
+  let scroll = false;
+  let itemsLength = 0;
+
+  const page = (id, reset) => {
+    console.log('page()');
+    console.log('scroll: ' + scroll);
+    console.log('id: ' + id);
+
+    el.innerHTML = screens[id];
+
+    itemsLength = document.getElementsByClassName("c").length;
+    console.log('itemsLength' + itemsLength);
+
+    if (reset) {
+      scroll = itemsLength === 1 ? 0: false;
+      console.log('reset scroll to ' + scroll);
+    }
+
+    highlight();
+  };
+
+  const initPipboy = () => {
+    el = document.getElementById('container')
+    page('splash');
+    el.focus();
+
+    const body = document.getElementsByTagName("BODY")[0];
+    body.onkeydown = keyHandler;
+  };
+
+  /**
+   *
+   */
+  const highlight = () => {
+    if (scroll !== false) {
+      collection = document.getElementsByClassName("c");
+
+      const listItems = Array.prototype.slice.call(collection);
+
+      console.log('Highlighting ' + scroll + ' of', listItems);
+
+
+      listItems.forEach((listItem) => {
+        listItem.classList.remove("highlight");
+      });
+
+      listItems[scroll].classList.add("highlight");
+    }
+  };
+
+  /**
+   *
+   */
+  window.onload = function() {
+    initPipboy();
+  };
+
+
+  </script>
+</head>
+<body>
+  <div id="container" class="crt" tabindex="0">
+  </div>
+</body>
+</html>

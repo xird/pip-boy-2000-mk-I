@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "jh";
+  src: url('jh_fallout-webfont.woff') format('woff');
+}
+
+* {
+  z-index: 0;
+}
+
+body {
+  font-family: "jh";
+  background: green;
+  color: #46ab46;
+  font-size: 12px;
+  margin: 0;
+}
+
+div#container {
+  background: black;
+  width: 480px;
+  height: 640px;
+  margin: 0;
+  position: relative;
+  z-index: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 12px;
+  text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h3 {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+p, li {
+  font-size: 12px;
+}
+
+ul {
+  position: relative;
+  z-index: 1;
+}
+
+li {
+  list-style: none;
+  margin-left: -20px;
+}
+
+li.highlight {
+  color: #fcfc7c;
+}
+
+li.done {
+  text-decoration: line-through;
+  color: #080;
+}
+
+ul.back {
+  position: absolute;
+  left: -20px;
+  bottom: 10px;
+  width: 480px;
+  text-align: center;
+}
+
+img.map {
+  position: absolute;
+  top: 65px;
+  width: 480px;
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
