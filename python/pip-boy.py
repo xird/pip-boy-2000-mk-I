@@ -3,6 +3,7 @@ import serial
 import time
 
 ser = serial.Serial('/dev/ttyACM0')
+pot = [0, 0];
 
 while True:
   data = ser.readline().strip().decode()
@@ -19,10 +20,13 @@ while True:
       print('Unknown rot command "' + data  + '"');
   elif command[0] == 'pot':
     # This should be filtered on the Arduino, but I can't be bothered opening the Pip-boy just now.
-    if abs(pot[command[1]] - command[2]):
+    poti = int(command[1]);
+    diff = pot[poti] - int(command[2]);
+    # print(diff)
+    if abs(diff) > 10:
       print(data);
       keyboard.write(command[1] + command[2] + ' ')
-      pot[command[1]] = command[2]
+      pot[poti] = int(command[2])
   elif command[0][:1] == 'B':
     if command[0][1:] == '11':
       print('STATUS')

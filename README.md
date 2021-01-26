@@ -56,7 +56,9 @@ Once the sketch is loaded on the Every, connect it to the Pi with a micro-USB ca
 - Turn the display sideways by adding the following line to `/boot/config.txt` under `[all`]:
 `display_rotate=1`
 
-- TODO install Chromium start up
+To start Chromium fullscreen with the Pip-boy UI page:
+- Edit `/etc/xdg/lxsession/LXDE-pi/autostart`, and add the following line:
+`@chromium-browser --kiosk --start-fullscreen /home/pi/Desktop/pip-boy-2000-mk-I/html/index.html`
 
 ### Python
 
