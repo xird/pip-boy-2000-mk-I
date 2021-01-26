@@ -6,7 +6,7 @@ ser = serial.Serial('/dev/ttyACM0')
 pot = [0, 0];
 
 while True:
-  data = ser.readline().strip().decode()
+  data = ser.readline().strip().decode(encoding='ascii', errors="ignore")
   command = data.split(' ')
 
   if command[0] == 'rot':
