@@ -1,8 +1,33 @@
 import keyboard
 import serial
 import time
+import subprocess
+import re
+from pathlib import Path
+import time
 
-ser = serial.Serial('/dev/ttyACM0')
+# Check that the script isn't already running
+processes = subprocess.check_output(["/bin/ps", "-aux"]).decode(encoding='ascii')
+print(processes)
+pythons = re.finditer('python', processes)
+pythoncount = 0
+for python in pythons:
+  pythoncount = pythoncount + 1
+
+# The expected value is 2; This script with and without "sudo"
+if pythoncount > 2:
+  print('Looks like this script is already running')
+  exit(1)
+
+# Check that the serial port is available
+portfilepath = '/dev/ttyACM0'
+portfile = Path(portfilepath)
+while not portfile.exists():
+  print('No /dev/ttyAC0 available...')
+  time.sleep(2) 
+
+print('Found /dev/ttyAC0')
+ser = serial.Serial(portfilepath)
 pot = [0, 0];
 
 while True:
