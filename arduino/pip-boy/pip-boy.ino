@@ -39,8 +39,8 @@ void setup() {
   potentiometerSavedValues[0] = analogRead(potentiometerPins[0]);
   potentiometerSavedValues[1] = analogRead(potentiometerPins[1]);
 
-  // Make sure serial comms give a chance to upload a new sketch after reset
-  delay(500);
+  // Wait 20 seconds from power-up to give the Pi a chance to boot before attempting serial comms.
+  delay(20000);
 
   // start serial port at 9600 bps:
   Serial.begin(9600);
