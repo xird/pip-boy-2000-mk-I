@@ -9,7 +9,7 @@ import time
 # Check that the script isn't already running
 processes = subprocess.check_output(["/bin/ps", "-aux"]).decode(encoding='ascii')
 print(processes)
-pythons = re.finditer('python', processes)
+pythons = re.finditer('python3 /home/pi/Desktop/pip-boy-2000-mk-I', processes)
 pythoncount = 0
 for python in pythons:
   pythoncount = pythoncount + 1
