@@ -15,7 +15,7 @@ A Pip-boy prop based on the original Pip-boy 2000 from Fallout 1 &amp; 2
 - First build log post in my blog: http://blog.ampli.fi/fallout-1-2-style-pip-boy-2000-replica-part-1-design/
 - Thread on the RPF: https://www.therpf.com/forums/threads/pip-boy-2000-mk-i-from-fallout-1-fallout-2.329566/
 - STL files on Thingiverse: TODO
-- Test run the "Pip-boy UI site" here: http://ampli.fi/pip-boy
+- Test run the "Pip-boy UI site" here: http://ampli.fi/pip-boy (`try m|r|s|c|up|down|enter`)
 
 ## Included in this repository
 
@@ -74,7 +74,7 @@ After that, you can try to run the script with `python pip-boy.py`. Any communic
 To make the script run when the Pi is started, add the following line to `/home/pi/.profile`:
 `sudo python3 /home/pi/Desktop/pip-boy-2000-mk-I/python/pip-boy.py &`
 
-In case you need more logs saved (note that the previous logs get overwritten as soon as you open a new terminal), change the line to 
+In case you need more logs saved (note that the previous logs get overwritten as soon as you open a new terminal), change the line to
 `sudo python3 /home/pi/Desktop/pip-boy-2000-mk-I/python/pip-boy.py > /home/pi/pip-boy-out-$(date +"%Y-%m-%dT%H:%M:%S").log 2> pip-boy-error-$(date +"%Y-%m-%dT%H:%M:%S").log &`
 
 Once you've done all the config on the Pi, including the Python config, reboot:
