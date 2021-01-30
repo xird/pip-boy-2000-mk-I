@@ -15,6 +15,8 @@ const int buttonPinClose = 5;
 const int buttonPinStatus = 11;
 const int buttonPinAutomaps = 12;
 
+const int potSmoothing = 6;
+
 // For optional comms as an alternative to USB. See sendEvent() below.
 SoftwareSerial raspberry(39, 13); // RX, TX
 
@@ -107,7 +109,7 @@ void checkButtonPress(int pin) {
 void checkPotValue(int potIndex) {
   int reading = analogRead(potentiometerPins[potIndex]);
 
-  if (abs(reading - potentiometerSavedValues[potIndex]) > 3 ) {
+  if (abs(reading - potentiometerSavedValues[potIndex]) > potSmoothing ) {
     potentiometerSavedValues[potIndex] = reading;
     sendEvent("pot " + String(potIndex) + " " + reading);
   }
