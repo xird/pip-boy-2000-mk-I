@@ -9,14 +9,13 @@
 
 body {
   font-family: "jh";
-  background: green;
-  color: #46ab46;
+  background: #300;
   font-size: 12px;
   margin: 0;
 }
 
 div#container {
-  background: black;
+  background: #000;
   width: 480px;
   height: 640px;
   margin: 0;
@@ -52,13 +51,8 @@ li {
   margin-left: -20px;
 }
 
-li.highlight {
-  color: #fcfc7c;
-}
-
 li.done {
   text-decoration: line-through;
-  color: #080;
 }
 
 ul.back {
@@ -70,6 +64,7 @@ ul.back {
 }
 
 img.map {
+  background: #000;
   position: absolute;
   top: 65px;
   width: 480px;
@@ -83,7 +78,7 @@ img.map {
   left: 0;
   bottom: 0;
   right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background: linear-gradient( rgba(0, 0, 0, 0.25) 50%, rgba(18, 16, 16, 0) 0%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   z-index: 2;
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;

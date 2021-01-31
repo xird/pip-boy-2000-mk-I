@@ -1,1 +1,1 @@
-screens.splash = '<img src="img/splash.png" />';
+screens.splash = '<img class="map" src="img/splash.png" />';
