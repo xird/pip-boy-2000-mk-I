@@ -197,7 +197,9 @@
         listItem.classList.remove("highlight");
       });
 
-      listItems[scroll].classList.add("highlight");
+      if (typeof listItems[scroll] !== 'undefined') {
+        listItems[scroll].classList.add("highlight");
+      }
     }
   };
 
