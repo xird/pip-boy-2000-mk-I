@@ -117,20 +117,20 @@
         const potValue = parseInt(digitBuffer.substr(1));
         digitBuffer = '';
 
-        if (potValue < 0 || potValue > 255) {
+        if (potValue < 0 || potValue > 1024) {
           break;
         }
 
         switch (pot) {
           case '0':
             // Hue setting
-            hue = mapValue(potValue, 0, 255, 0, 360);
+            hue = mapValue(potValue, 0, 1024, 0, 360);
             setColourRGB();
             break;
 
           case '1':
             // Brightness setting
-            brightness = mapValue(potValue, 0, 255, 100, 255);
+            brightness = mapValue(potValue, 0, 1024, 100, 255);
             setColourRGB();
             break;
 

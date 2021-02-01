@@ -70,6 +70,12 @@ img.map {
   width: 480px;
 }
 
+img#splash {
+  position: relative;
+  top: 0px;
+  width: 480px;
+}
+
 .crt::before {
   content: " ";
   display: block;
